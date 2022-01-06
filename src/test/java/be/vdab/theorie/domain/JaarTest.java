@@ -1,9 +1,11 @@
 package be.vdab.theorie.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 class JaarTest {
     @Test
+    @DisplayName("Een jaar deelbaar door 400 is een schrikkeljaar.")
     void eenJaarDeelbaarDoor400IsEenSchrikkeljaar() {
         var jaar = new Jaar(2000);
         assertThat(jaar.isSchrikkeljaar()).isTrue();
@@ -12,6 +14,7 @@ class JaarTest {
     void eenJaarDeelbaarDoor100IsGeenSchrikkeljaar() {
         assertThat(new Jaar(1900).isSchrikkeljaar()).isFalse();
     }
+
     @Test
     void eenJaarDeelbaarDoor4IsEenSchrikkeljaar() {
         assertThat(new Jaar(2012).isSchrikkeljaar()).isTrue();
