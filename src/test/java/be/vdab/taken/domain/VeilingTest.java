@@ -1,22 +1,27 @@
-package be.vdab.theorie.domain;
+package be.vdab.taken.domain;
 
-import be.vdab.taken.domain.Veiling;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class VeilingTest {
+    private Veiling veiling;   // alleen pue declaratie
+    @BeforeEach
+    void beforeEach(){
+        veiling = new Veiling();   // alleen pue initialisatie
+    }
     @Test
     void geenBodGedaanDanHoogsteIs0() {
-        var veiling = new Veiling();
 //        veiling.doeBod(BigDecimal.valueOf(1_000));
         var hoogsteBod = veiling.getHoogsteBod();
         assertThat(hoogsteBod).isEqualTo(BigDecimal.ZERO);
     }
     @Test
     void eenmaligBodHoogsteIsDatBod() {
-        var veiling = new Veiling();
         veiling.doeBod(BigDecimal.valueOf(1_000));
         veiling.doeBod(BigDecimal.valueOf(2_000));
         var hoogsteBod = veiling.getHoogsteBod();
